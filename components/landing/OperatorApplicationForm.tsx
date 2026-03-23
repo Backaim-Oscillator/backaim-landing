@@ -9,7 +9,6 @@ type FormState = {
   name: string;
   email: string;
   country: string;
-  role: "Operator" | "Partner";
 };
 
 function isValidEmail(email: string) {
@@ -22,7 +21,6 @@ export default function OperatorApplicationForm() {
     name: "",
     email: "",
     country: "",
-    role: "Operator",
   });
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -33,7 +31,6 @@ export default function OperatorApplicationForm() {
       name: form.name.trim(),
       email: form.email.trim(),
       country: form.country.trim(),
-      role: form.role,
     }),
     [form]
   );
@@ -47,7 +44,6 @@ export default function OperatorApplicationForm() {
       errs.email = "Please enter a valid email address.";
     }
     if (!trimmed.country) errs.country = "Please enter your country.";
-    if (!trimmed.role) errs.role = "Please select a role.";
 
     return errs;
   }, [trimmed]);
@@ -66,16 +62,10 @@ export default function OperatorApplicationForm() {
 
     setSubmitting(true);
     try {
-      const appEnv = process.env.NEXT_PUBLIC_APP_ENV ?? "development";
-      const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL?.trim() ?? "";
       const formTarget =
         process.env.NEXT_PUBLIC_OPERATOR_FORM_TARGET ?? "/api/operator-apply";
-      const submitUrl =
-        appEnv === "production" && backendUrl
-          ? new URL(formTarget, backendUrl).toString()
-          : formTarget;
 
-      const res = await fetch(submitUrl, {
+      const res = await fetch(formTarget, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(trimmed),
@@ -90,7 +80,7 @@ export default function OperatorApplicationForm() {
       }
 
       setSuccess("Application received. Thank you.");
-      setForm({ name: "", email: "", country: "", role: "Operator" });
+      setForm({ name: "", email: "", country: "" });
     } catch {
       setError("Network error. Please try again.");
     } finally {
@@ -165,28 +155,6 @@ export default function OperatorApplicationForm() {
             ) : null}
           </label>
 
-          <label className="grid gap-2">
-            <span className="text-sm font-medium text-zinc-900">Role</span>
-            <select
-              name="role"
-              value={form.role}
-              onChange={(e) =>
-                setForm((prev) => ({
-                  ...prev,
-                  role: e.target.value as FormState["role"],
-                }))
-              }
-              className="h-11 rounded-xl border border-zinc-200 bg-white px-3 text-zinc-900 shadow-sm outline-none focus:border-zinc-400"
-              aria-invalid={Boolean(fieldErrors.role)}
-              required
-            >
-              <option value="Operator">Operator</option>
-              <option value="Partner">Partner</option>
-            </select>
-            {fieldErrors.role ? (
-              <span className="text-sm text-red-600">{fieldErrors.role}</span>
-            ) : null}
-          </label>
         </div>
 
         <div className="mt-6 flex flex-col sm:flex-row gap-3 sm:items-center">
