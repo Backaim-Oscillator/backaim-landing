@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { type FormEvent, useState, useTransition } from "react";
+import { type FormEvent, useEffect, useState, useTransition } from "react";
 import {
   getDefaultScenarioInput,
   runScenarioSimulation,
@@ -42,10 +42,11 @@ const productVisuals = [
 ];
 
 const navItems = [
-  { href: "#studio", label: "Scenario Studio" },
-  { href: "#how-it-works", label: "How It Works" },
-  { href: "#products", label: "Products" },
-  { href: "#live-build", label: "Live Build" },
+  { id: "studio", label: "Scenario Studio" },
+  { id: "how-it-works", label: "How It Works" },
+  { id: "products", label: "Products" },
+  { id: "stack", label: "Operator Stack" },
+  { id: "live-build", label: "Live Build" },
 ];
 
 function metricLabel(id: string) {
@@ -53,6 +54,7 @@ function metricLabel(id: string) {
 }
 
 export default function MvpExperience() {
+  const [activeSection, setActiveSection] = useState(navItems[0].id);
   const [scenarioInput, setScenarioInput] = useState<ScenarioInput>(
     getDefaultScenarioInput()
   );
@@ -70,6 +72,48 @@ export default function MvpExperience() {
   const [leadSuccess, setLeadSuccess] = useState<string | null>(null);
   const [isScenarioPending, startScenarioTransition] = useTransition();
   const [isLeadPending, startLeadTransition] = useTransition();
+
+  useEffect(() => {
+    const sections = navItems
+      .map((item) => document.getElementById(item.id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    if (!sections.length) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        const nextSection = visibleEntries[0]?.target.getAttribute("id");
+        if (nextSection) {
+          setActiveSection(nextSection);
+        }
+      },
+      {
+        rootMargin: "-25% 0px -55% 0px",
+        threshold: [0.2, 0.35, 0.5, 0.7],
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
+  function handleNavClick(sectionId: string) {
+    const target = document.getElementById(sectionId);
+    if (!target) {
+      return;
+    }
+
+    setActiveSection(sectionId);
+    window.history.replaceState(null, "", `#${sectionId}`);
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 
   async function runSimulation(nextInput: ScenarioInput) {
     startScenarioTransition(async () => {
@@ -183,13 +227,19 @@ export default function MvpExperience() {
           <div className="font-medium tracking-[0.28em] text-white">BACKAIM OS</div>
           <nav className="-mx-1 flex gap-2 overflow-x-auto pb-1 md:mx-0 md:gap-6 md:overflow-visible md:pb-0">
             {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="shrink-0 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-white/84 transition-colors hover:border-white/24 hover:text-white md:border-0 md:bg-transparent md:px-0 md:py-0 md:text-sm"
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => handleNavClick(item.id)}
+                aria-current={activeSection === item.id ? "page" : undefined}
+                className={`shrink-0 rounded-full border px-3 py-2 text-xs font-medium transition-colors md:border-0 md:bg-transparent md:px-0 md:py-0 md:text-sm ${
+                  activeSection === item.id
+                    ? "border-lime-300/35 bg-lime-200/12 text-white md:text-lime-100"
+                    : "border-white/10 bg-white/[0.04] text-white/84 hover:border-white/24 hover:text-white"
+                }`}
               >
                 {item.label}
-              </a>
+              </button>
             ))}
           </nav>
         </div>
