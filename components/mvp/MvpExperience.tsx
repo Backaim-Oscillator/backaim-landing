@@ -41,6 +41,13 @@ const productVisuals = [
   },
 ];
 
+const navItems = [
+  { href: "#studio", label: "Scenario Studio" },
+  { href: "#how-it-works", label: "How It Works" },
+  { href: "#products", label: "Products" },
+  { href: "#live-build", label: "Live Build" },
+];
+
 function metricLabel(id: string) {
   return scenarioCatalog.find((scenario) => scenario.id === id)?.name ?? id;
 }
@@ -172,14 +179,19 @@ export default function MvpExperience() {
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(180deg,black,transparent_82%)]" />
 
       <section className="mx-auto flex w-full max-w-7xl flex-col px-5 pb-12 pt-6 sm:px-8 lg:px-10">
-        <div className="flex items-center justify-between border-b border-white/10 pb-4 text-sm text-white/72">
+        <div className="flex flex-col gap-4 border-b border-white/10 pb-4 text-sm text-white/72 md:flex-row md:items-center md:justify-between">
           <div className="font-medium tracking-[0.28em] text-white">BACKAIM OS</div>
-          <div className="hidden gap-6 md:flex">
-            <a href="#studio">Scenario Studio</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#products">Products</a>
-            <a href="#live-build">Live Build</a>
-          </div>
+          <nav className="-mx-1 flex gap-2 overflow-x-auto pb-1 md:mx-0 md:gap-6 md:overflow-visible md:pb-0">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="shrink-0 rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-xs font-medium text-white/84 transition-colors hover:border-white/24 hover:text-white md:border-0 md:bg-transparent md:px-0 md:py-0 md:text-sm"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
         </div>
 
         <div className="relative grid gap-10 py-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:py-[4.5rem]">
