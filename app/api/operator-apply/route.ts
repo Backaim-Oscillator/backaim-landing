@@ -9,6 +9,10 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+function getOperatorApplicationsTable() {
+  return process.env.SUPABASE_OPERATOR_APPLICATIONS_TABLE ?? "operator_applications";
+}
+
 export async function POST(req: Request) {
   let payload: unknown;
 
@@ -39,11 +43,13 @@ export async function POST(req: Request) {
 
   try {
     const supabaseAdmin = getSupabaseAdmin();
-    const { error } = await supabaseAdmin.from("operator_applications").insert({
-      name: name.trim(),
-      email: email.trim(),
-      country: country.trim(),
-    });
+    const { error } = await supabaseAdmin
+      .from(getOperatorApplicationsTable())
+      .insert({
+        name: name.trim(),
+        email: email.trim(),
+        country: country.trim(),
+      });
 
     if (error) {
       console.error("Failed to insert operator application:", error);
@@ -62,4 +68,3 @@ export async function POST(req: Request) {
     );
   }
 }
-
