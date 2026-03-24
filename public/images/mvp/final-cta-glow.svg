@@ -1,0 +1,24 @@
+<svg width="1400" height="860" viewBox="0 0 1400 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1400" height="860" rx="36" fill="#081019"/>
+  <path d="M218 650C326 602 448 576 582 590C716 604 826 674 954 652C1090 628 1184 542 1280 438" stroke="#294763" stroke-width="3"/>
+  <path d="M188 704C364 610 518 592 704 620C916 652 1030 614 1234 438" stroke="#345A7C" stroke-width="3"/>
+  <g filter="url(#glow)">
+    <ellipse cx="928" cy="418" rx="214" ry="130" fill="#A7D6FF"/>
+    <ellipse cx="1026" cy="372" rx="170" ry="98" fill="#EAF4FF"/>
+  </g>
+  <path d="M468 680L696 536L860 592L1032 438" stroke="url(#ctaLine)" stroke-width="6"/>
+  <circle cx="468" cy="680" r="16" fill="#89C6FF"/>
+  <circle cx="696" cy="536" r="18" fill="#D6EEFF"/>
+  <circle cx="860" cy="592" r="16" fill="#9FCFFF"/>
+  <circle cx="1032" cy="438" r="20" fill="#F5FBFF"/>
+  <defs>
+    <filter id="glow" x="514" y="74" width="712" height="544" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="100"/>
+    </filter>
+    <linearGradient id="ctaLine" x1="468" y1="680" x2="1032" y2="438" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6EB8FF"/>
+      <stop offset="0.7" stop-color="#D9EEFF"/>
+      <stop offset="1" stop-color="#F6FCFF"/>
+    </linearGradient>
+  </defs>
+</svg>

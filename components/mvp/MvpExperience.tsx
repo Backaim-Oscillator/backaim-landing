@@ -18,6 +18,29 @@ type DemoFormState = {
   timeline: string;
 };
 
+const productVisuals = [
+  {
+    title: "HAS. Dirty Pictures",
+    description: "Signals between leads, accounts, and conversion pressure.",
+    src: "/images/mvp/sales-activity.svg",
+  },
+  {
+    title: "Marketing Intelligence",
+    description: "Channels converge into a measurable conversion system.",
+    src: "/images/mvp/marketing-flow.svg",
+  },
+  {
+    title: "Legal + Accounting",
+    description: "Structured data relationships with stable decision paths.",
+    src: "/images/mvp/legal-grid.svg",
+  },
+  {
+    title: "Speakang",
+    description: "Conversational flow rendered as intelligence in motion.",
+    src: "/images/mvp/language-wave.svg",
+  },
+];
+
 function metricLabel(id: string) {
   return scenarioCatalog.find((scenario) => scenario.id === id)?.name ?? id;
 }
@@ -145,31 +168,43 @@ export default function MvpExperience() {
 
   return (
     <main className="relative overflow-hidden">
-      <div className="absolute inset-x-0 top-0 -z-20 h-[720px] bg-[radial-gradient(circle_at_top_left,_rgba(168,255,120,0.22),_transparent_42%),radial-gradient(circle_at_top_right,_rgba(255,255,255,0.18),_transparent_30%),linear-gradient(180deg,_#08110d_0%,_#0b1410_46%,_#f5f1e8_100%)]" />
+      <div className="absolute inset-x-0 top-0 -z-20 h-[760px] bg-[radial-gradient(circle_at_top_left,_rgba(168,255,120,0.16),_transparent_38%),radial-gradient(circle_at_top_right,_rgba(255,255,255,0.16),_transparent_28%),linear-gradient(180deg,_#07100d_0%,_#0b1410_48%,_#f5f1e8_100%)]" />
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:linear-gradient(180deg,black,transparent_82%)]" />
 
-      <section className="mx-auto flex w-full max-w-7xl flex-col px-5 pb-14 pt-6 sm:px-8 lg:px-10">
+      <section className="mx-auto flex w-full max-w-7xl flex-col px-5 pb-12 pt-6 sm:px-8 lg:px-10">
         <div className="flex items-center justify-between border-b border-white/10 pb-4 text-sm text-white/72">
           <div className="font-medium tracking-[0.28em] text-white">BACKAIM OS</div>
           <div className="hidden gap-6 md:flex">
             <a href="#studio">Scenario Studio</a>
-            <a href="#stack">Product Stack</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#products">Products</a>
             <a href="#live-build">Live Build</a>
           </div>
         </div>
 
-        <div className="grid gap-10 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:py-[4.5rem]">
-          <div className="max-w-4xl">
+        <div className="relative grid gap-10 py-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:py-[4.5rem]">
+          <div className="pointer-events-none absolute inset-x-0 top-8 -z-10 hidden h-[520px] opacity-55 lg:block">
+            <Image
+              src="/images/mvp/hero-network.svg"
+              alt=""
+              fill
+              className="object-contain object-center"
+              aria-hidden="true"
+              priority
+            />
+          </div>
+
+          <div className="relative max-w-4xl">
             <div className="inline-flex rounded-full border border-lime-300/25 bg-lime-200/10 px-4 py-2 text-xs uppercase tracking-[0.32em] text-lime-100">
-              Frontend + backend MVP, not a brochure
+              Full-stack MVP with product-grade visuals
             </div>
             <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.94] tracking-[-0.04em] text-white sm:text-7xl">
-              Simulate the sale, quantify the edge, and hand buyers copy they can use.
+              Simulate the sale, quantify the edge, and show the system as intelligence in motion.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/72 sm:text-xl">
-              This build turns Backaim into a product surface: live infrastructure
-              scenarios, API-backed commercial outputs, and a request flow that
-              can persist instantly when Supabase is configured.
+              The page now uses abstract premium visuals instead of generic imagery:
+              network intelligence at the top, system-flow explanation in the middle,
+              product-specific graphics in the grid, and a stronger close.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -190,29 +225,29 @@ export default function MvpExperience() {
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               <div className="glass-panel rounded-[28px] p-5">
                 <div className="text-xs uppercase tracking-[0.26em] text-white/42">
-                  API Surface
+                  Hero Visual
                 </div>
-                <div className="mt-2 text-3xl font-semibold text-white">2 routes</div>
+                <div className="mt-2 text-3xl font-semibold text-white">Updated</div>
                 <p className="mt-2 text-sm leading-6 text-white/64">
-                  One route simulates the commercial case. One captures the live build request.
+                  The top section now uses an abstract connected-system image behind the headline.
                 </p>
               </div>
               <div className="glass-panel rounded-[28px] p-5">
                 <div className="text-xs uppercase tracking-[0.26em] text-white/42">
-                  Scenario Depth
+                  System Flow
                 </div>
-                <div className="mt-2 text-3xl font-semibold text-white">3 plays</div>
+                <div className="mt-2 text-3xl font-semibold text-white">3-step</div>
                 <p className="mt-2 text-sm leading-6 text-white/64">
-                  Compute expansion, greenhouse margin defense, and curtailment recovery.
+                  Added a dedicated diagram illustration for data, AI processing, and action.
                 </p>
               </div>
               <div className="glass-panel rounded-[28px] p-5">
                 <div className="text-xs uppercase tracking-[0.26em] text-white/42">
-                  Sales Output
+                  Product Imagery
                 </div>
-                <div className="mt-2 text-3xl font-semibold text-white">Copy ready</div>
+                <div className="mt-2 text-3xl font-semibold text-white">4 visuals</div>
                 <p className="mt-2 text-sm leading-6 text-white/64">
-                  Generated narrative buyers can paste into internal threads or deal memos.
+                  Each product area now has a distinct abstract image instead of reused screenshots.
                 </p>
               </div>
             </div>
@@ -222,12 +257,12 @@ export default function MvpExperience() {
             <div className="absolute inset-0 rounded-[34px] bg-lime-200/14 blur-3xl" />
             <div className="relative overflow-hidden rounded-[34px] border border-white/12 bg-[#101915]/80 p-4 shadow-[0_32px_100px_rgba(3,8,6,0.45)] backdrop-blur-xl">
               <div className="mb-4 flex items-center justify-between rounded-[24px] border border-white/10 bg-black/18 px-4 py-3 text-xs uppercase tracking-[0.24em] text-white/48">
-                <span>Live operator view</span>
+                <span>Interconnected business systems</span>
                 <span>{simulation.urgencyLabel}</span>
               </div>
               <Image
-                src="/images/Operator dashboard U.png"
-                alt="Backaim operator dashboard interface"
+                src="/images/mvp/hero-network.svg"
+                alt="Abstract futuristic network visualization representing interconnected business systems."
                 width={1200}
                 height={900}
                 className="rounded-[26px] border border-white/10 object-cover"
@@ -250,9 +285,8 @@ export default function MvpExperience() {
             Choose the buyer story and run the numbers.
           </h2>
           <p className="mt-3 text-base leading-7 text-[var(--ink-soft)]">
-            This is the MVP core: one interface for selecting a real operating
-            pressure, modeling the impact, and returning a commercial story with
-            measurable upside.
+            The interaction stays product-first: select a pressure pattern, adjust the
+            economic inputs, and return a quantified operating case with reusable sales copy.
           </p>
 
           <div className="mt-8 grid gap-3">
@@ -425,44 +459,143 @@ export default function MvpExperience() {
       </section>
 
       <section
-        id="stack"
-        className="mx-auto grid w-full max-w-7xl gap-5 px-5 py-10 sm:px-8 lg:grid-cols-3 lg:px-10"
+        id="how-it-works"
+        className="mx-auto grid w-full max-w-7xl gap-8 px-5 py-10 sm:px-8 lg:grid-cols-[0.78fr_1.22fr] lg:px-10"
       >
-        <div className="rounded-[30px] border border-black/8 bg-white/70 p-6">
-          <div className="text-xs uppercase tracking-[0.28em] text-[var(--ink-soft)]">
-            Frontend surface
+        <div className="rounded-[34px] border border-black/8 bg-white/74 p-6 md:p-8">
+          <div className="text-xs uppercase tracking-[0.32em] text-[var(--ink-soft)]">
+            How It Works
           </div>
-          <h3 className="mt-3 text-2xl font-semibold text-[var(--ink)]">
-            Premium operator UI instead of static persuasion blocks.
-          </h3>
-          <p className="mt-4 text-sm leading-7 text-[var(--ink-soft)]">
-            The page is now a product shell with live controls, calculated outputs,
-            and buyer-ready copy inside the experience.
+          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
+            Input signals, process them centrally, then trigger actions.
+          </h2>
+          <p className="mt-4 text-base leading-7 text-[var(--ink-soft)]">
+            The explanation now has its own structured illustration instead of asking
+            the UI copy to do all the work. That keeps the page clearer and more credible.
+          </p>
+          <div className="mt-8 space-y-3">
+            <div className="rounded-[20px] border border-black/8 bg-black/[0.02] px-4 py-4 text-sm leading-6 text-[var(--ink)]">
+              1. Inputs: emails, calls, interactions, and commercial pressure points.
+            </div>
+            <div className="rounded-[20px] border border-black/8 bg-black/[0.02] px-4 py-4 text-sm leading-6 text-[var(--ink)]">
+              2. Core: scenario logic and operating intelligence convert noise into structure.
+            </div>
+            <div className="rounded-[20px] border border-black/8 bg-black/[0.02] px-4 py-4 text-sm leading-6 text-[var(--ink)]">
+              3. Outputs: messages, decisions, deployment priorities, and optimizations.
+            </div>
+          </div>
+        </div>
+
+        <div className="overflow-hidden rounded-[34px] border border-black/8 bg-white/72 p-4 shadow-[0_24px_90px_rgba(15,23,20,0.08)]">
+          <Image
+            src="/images/mvp/how-it-works-flow.svg"
+            alt="Abstract three-step system flow showing data inputs, central AI processing, and output actions."
+            width={1400}
+            height={900}
+            className="w-full rounded-[28px] border border-black/6"
+          />
+        </div>
+      </section>
+
+      <section
+        id="products"
+        className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-8 lg:px-10"
+      >
+        <div className="flex max-w-3xl flex-col gap-3">
+          <div className="text-xs uppercase tracking-[0.32em] text-[var(--ink-soft)]">
+            Product Visuals
+          </div>
+          <h2 className="text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
+            Each product area now has imagery that feels specific and intentional.
+          </h2>
+          <p className="text-base leading-7 text-[var(--ink-soft)]">
+            The grid uses distinct abstract visuals for sales, marketing, legal-accounting,
+            and language AI so the products read like separate surfaces in one ecosystem.
           </p>
         </div>
-        <div className="rounded-[30px] border border-black/8 bg-[var(--ink)] p-6">
-          <div className="text-xs uppercase tracking-[0.28em] text-white/42">
-            Backend logic
-          </div>
-          <h3 className="mt-3 text-2xl font-semibold text-white">
-            Route handlers simulate the commercial case in real time.
-          </h3>
-          <p className="mt-4 text-sm leading-7 text-white/66">
-            `GET /api/scenario-demo` returns quantified upside. `POST /api/demo-request`
-            captures the commercial follow-up and persists when credentials are present.
-          </p>
+
+        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {productVisuals.map((visual) => (
+            <article
+              key={visual.title}
+              className="overflow-hidden rounded-[30px] border border-black/8 bg-white/74 shadow-[0_18px_60px_rgba(15,23,20,0.07)]"
+            >
+              <Image
+                src={visual.src}
+                alt={visual.title}
+                width={900}
+                height={680}
+                className="aspect-[4/3] w-full object-cover"
+              />
+              <div className="p-5">
+                <h3 className="text-xl font-semibold text-[var(--ink)]">{visual.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-[var(--ink-soft)]">
+                  {visual.description}
+                </p>
+              </div>
+            </article>
+          ))}
         </div>
-        <div className="rounded-[30px] border border-black/8 bg-[var(--brand-lime)]/18 p-6">
-          <div className="text-xs uppercase tracking-[0.28em] text-[var(--ink-soft)]">
-            Sales utility
+      </section>
+
+      <section
+        id="stack"
+        className="mx-auto grid w-full max-w-7xl gap-6 px-5 py-10 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10"
+      >
+        <div className="overflow-hidden rounded-[34px] border border-white/10 bg-[var(--ink)] p-4 shadow-[0_28px_90px_rgba(10,18,12,0.16)]">
+          <Image
+            src="/images/mvp/operator-network.svg"
+            alt="Abstract global operator network connected to a central intelligent system."
+            width={1400}
+            height={860}
+            className="rounded-[28px] border border-white/10"
+          />
+          <div className="px-2 pb-2 pt-5">
+            <div className="text-xs uppercase tracking-[0.28em] text-white/42">
+              Operator Model
+            </div>
+            <h3 className="mt-2 text-2xl font-semibold text-white">
+              Distributed operators connected through one intelligent backbone.
+            </h3>
           </div>
-          <h3 className="mt-3 text-2xl font-semibold text-[var(--ink)]">
-            Simulated real-world buyer pressure, not abstract positioning.
-          </h3>
-          <p className="mt-4 text-sm leading-7 text-[var(--ink-soft)]">
-            Each scenario frames Backaim as an operating decision with time, margin,
-            and revenue consequences.
-          </p>
+        </div>
+
+        <div className="grid gap-6">
+          <div className="overflow-hidden rounded-[34px] border border-black/8 bg-white/74 p-4">
+            <Image
+              src="/images/mvp/infrastructure-mesh.svg"
+              alt="Abstract physical infrastructure integrated with digital intelligence."
+              width={1400}
+              height={860}
+              className="rounded-[28px] border border-black/6"
+            />
+            <div className="px-2 pb-2 pt-5">
+              <div className="text-xs uppercase tracking-[0.28em] text-[var(--ink-soft)]">
+                Infrastructure Layer
+              </div>
+              <h3 className="mt-2 text-2xl font-semibold text-[var(--ink)]">
+                Digital intelligence tied directly to physical systems.
+              </h3>
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-[34px] border border-black/8 bg-white/74 p-4">
+            <Image
+              src="/images/mvp/dashboard-mockup.svg"
+              alt="Modern SaaS dashboard mockup for a sales intelligence system."
+              width={1400}
+              height={920}
+              className="rounded-[28px] border border-black/6"
+            />
+            <div className="px-2 pb-2 pt-5">
+              <div className="text-xs uppercase tracking-[0.28em] text-[var(--ink-soft)]">
+                Product Reality
+              </div>
+              <h3 className="mt-2 text-2xl font-semibold text-[var(--ink)]">
+                A dashboard visual that makes the system feel buyable.
+              </h3>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -470,30 +603,38 @@ export default function MvpExperience() {
         id="live-build"
         className="mx-auto grid w-full max-w-7xl gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[0.88fr_1.12fr] lg:px-10"
       >
-        <div className="rounded-[34px] border border-white/10 bg-[var(--ink)] p-6 md:p-8">
-          <div className="text-xs uppercase tracking-[0.3em] text-white/42">
-            Live Build Request
-          </div>
-          <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-white">
-            Turn this scenario into a stakeholder-ready operator plan.
-          </h2>
-          <p className="mt-4 text-base leading-7 text-white/68">
-            Submit the buyer context and we will hand the backend a real commercial
-            lead instead of a dead-end contact form.
-          </p>
-
-          <div className="mt-8 rounded-[28px] border border-white/10 bg-white/[0.04] p-5">
-            <div className="text-xs uppercase tracking-[0.28em] text-white/40">
-              Selected scenario
+        <div className="overflow-hidden rounded-[34px] border border-white/10 bg-[var(--ink)] p-4 md:p-5">
+          <Image
+            src="/images/mvp/final-cta-glow.svg"
+            alt="Minimal abstract scene representing forward momentum and future building."
+            width={1400}
+            height={860}
+            className="rounded-[28px] border border-white/10"
+          />
+          <div className="px-2 pb-3 pt-5">
+            <div className="text-xs uppercase tracking-[0.3em] text-white/42">
+              Live Build Request
             </div>
-            <div className="mt-2 text-2xl font-semibold text-white">
-              {metricLabel(scenarioInput.scenarioId)}
-            </div>
-            <p className="mt-3 text-sm leading-6 text-white/66">
-              Current model: {scenarioInput.facilities} facilities, $
-              {scenarioInput.monthlyRevenueAtRisk.toLocaleString("en-US")} monthly
-              value at risk, {scenarioInput.delayWeeks} weeks of delay exposure.
+            <h2 className="mt-3 text-3xl font-semibold tracking-[-0.03em] text-white">
+              Turn this scenario into a stakeholder-ready operator plan.
+            </h2>
+            <p className="mt-4 text-base leading-7 text-white/68">
+              The close now carries a stronger emotional visual instead of ending on form fields alone.
             </p>
+
+            <div className="mt-8 rounded-[28px] border border-white/10 bg-white/[0.04] p-5">
+              <div className="text-xs uppercase tracking-[0.28em] text-white/40">
+                Selected scenario
+              </div>
+              <div className="mt-2 text-2xl font-semibold text-white">
+                {metricLabel(scenarioInput.scenarioId)}
+              </div>
+              <p className="mt-3 text-sm leading-6 text-white/66">
+                Current model: {scenarioInput.facilities} facilities, $
+                {scenarioInput.monthlyRevenueAtRisk.toLocaleString("en-US")} monthly
+                value at risk, {scenarioInput.delayWeeks} weeks of delay exposure.
+              </p>
+            </div>
           </div>
         </div>
 
